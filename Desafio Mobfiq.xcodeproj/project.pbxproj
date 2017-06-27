@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		153D0EFC1F02F89F001F7586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D0EFB1F02F89F001F7586 /* AppDelegate.swift */; };
-		153D0EFE1F02F89F001F7586 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D0EFD1F02F89F001F7586 /* ViewController.swift */; };
 		153D0F011F02F89F001F7586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153D0EFF1F02F89F001F7586 /* Main.storyboard */; };
 		153D0F031F02F89F001F7586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153D0F021F02F89F001F7586 /* Assets.xcassets */; };
 		153D0F061F02F89F001F7586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153D0F041F02F89F001F7586 /* LaunchScreen.storyboard */; };
 		153D0F111F02F89F001F7586 /* Desafio_MobfiqTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D0F101F02F89F001F7586 /* Desafio_MobfiqTests.swift */; };
 		153D0F1C1F02F89F001F7586 /* Desafio_MobfiqUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D0F1B1F02F89F001F7586 /* Desafio_MobfiqUITests.swift */; };
+		153D0F2B1F02FFDA001F7586 /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D0F2A1F02FFDA001F7586 /* ProductsCollectionViewController.swift */; };
+		153D0F2D1F0319E0001F7586 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D0F2C1F0319E0001F7586 /* ProductCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		153D0EF81F02F89E001F7586 /* Desafio Mobfiq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio Mobfiq.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		153D0EFB1F02F89F001F7586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		153D0EFD1F02F89F001F7586 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		153D0F001F02F89F001F7586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		153D0F021F02F89F001F7586 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		153D0F051F02F89F001F7586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		153D0F171F02F89F001F7586 /* Desafio MobfiqUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio MobfiqUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		153D0F1B1F02F89F001F7586 /* Desafio_MobfiqUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_MobfiqUITests.swift; sourceTree = "<group>"; };
 		153D0F1D1F02F8A0001F7586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		153D0F2A1F02FFDA001F7586 /* ProductsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewController.swift; sourceTree = "<group>"; };
+		153D0F2C1F0319E0001F7586 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +99,11 @@
 		153D0EFA1F02F89E001F7586 /* Desafio Mobfiq */ = {
 			isa = PBXGroup;
 			children = (
-				153D0EFB1F02F89F001F7586 /* AppDelegate.swift */,
-				153D0EFD1F02F89F001F7586 /* ViewController.swift */,
+				153D0F291F02FF75001F7586 /* Supporting Files */,
 				153D0EFF1F02F89F001F7586 /* Main.storyboard */,
-				153D0F021F02F89F001F7586 /* Assets.xcassets */,
 				153D0F041F02F89F001F7586 /* LaunchScreen.storyboard */,
-				153D0F071F02F89F001F7586 /* Info.plist */,
+				153D0F2A1F02FFDA001F7586 /* ProductsCollectionViewController.swift */,
+				153D0F2C1F0319E0001F7586 /* ProductCollectionViewCell.swift */,
 			);
 			path = "Desafio Mobfiq";
 			sourceTree = "<group>";
@@ -123,6 +124,16 @@
 				153D0F1D1F02F8A0001F7586 /* Info.plist */,
 			);
 			path = "Desafio MobfiqUITests";
+			sourceTree = "<group>";
+		};
+		153D0F291F02FF75001F7586 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				153D0EFB1F02F89F001F7586 /* AppDelegate.swift */,
+				153D0F021F02F89F001F7586 /* Assets.xcassets */,
+				153D0F071F02F89F001F7586 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				153D0EFE1F02F89F001F7586 /* ViewController.swift in Sources */,
+				153D0F2B1F02FFDA001F7586 /* ProductsCollectionViewController.swift in Sources */,
+				153D0F2D1F0319E0001F7586 /* ProductCollectionViewCell.swift in Sources */,
 				153D0EFC1F02F89F001F7586 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
