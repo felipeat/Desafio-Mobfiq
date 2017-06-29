@@ -12,6 +12,8 @@ private let reuseCellIdentifier = "Cell"
 private let reuseHeaderIdentifier = "Header"
 
 class ProductsCollectionViewController: UICollectionViewController {
+    
+    var products : [ProductViewModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,19 @@ class ProductsCollectionViewController: UICollectionViewController {
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseCellIdentifier)
 
         // Do any additional setup after loading the view.
+        
+        /**************/
+        // TESTE / EXPERIMENTO
+        let count: Int? = 12
+        let value: Double? = 99.98
+        let total: Double? = 1199.83
+
+        let bi = BestInstallment(countInst: count, valueInst: value, totalInst: total)
+        let product = Product(name: "Teste", skus: [Sku(name: nil, sellers: [Seller(price: total, listPrice: total, bestInstallment: bi)], images: [])])
+
+        products = Array.init(repeating: ProductViewModel(withProduct:product), count: 10)
+        // TESTE / EXPERIMENTO
+        /*************/
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,13 +65,20 @@ class ProductsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 1
+        return self.products.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseCellIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseCellIdentifier, for: indexPath) as! ProductCollectionViewCell
     
         // Configure the cell
+        cell.productNameLabel.text = self.products[indexPath.row].productNameText ?? ""
+
+        let attributes: [String:Any] = [NSStrikethroughStyleAttributeName : NSNumber(value: NSUnderlineStyle.styleSingle.rawValue)]
+        cell.previousPriceLabel.attributedText = NSAttributedString(string: self.products[indexPath.row].previousPriceText ?? "", attributes: attributes)
+        
+        cell.currentPriceLabel.text = self.products[indexPath.row].currentPriceText ?? ""
+        cell.installmentLabel.text = self.products[indexPath.row].installmentText ?? ""
     
         return cell
     }
