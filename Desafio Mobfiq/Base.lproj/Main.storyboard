@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wbJ-EW-esk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Grh-vK-8Ef">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Products Collection View Controller-->
+        <!--Desafio Mobfiq-->
         <scene sceneID="GwF-pG-Tj0">
             <objects>
                 <collectionViewController id="wbJ-EW-esk" customClass="ProductsCollectionViewController" customModule="Desafio_Mobfiq" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,7 +45,7 @@
                                                 <constraint firstAttribute="height" constant="35" id="8Rv-1k-iY3"/>
                                             </constraints>
                                             <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum turpis vel sem pretium sagittis. Cras non diam metus. Aenean ligula est, posuere ut felis at, vehicula fermentum urna. Nam eget magna orci. Phasellus et scelerisque purus. Nulla placerat, orci a aliquam dapibus, ex libero malesuada est, sed elementum libero dui quis leo. Cras ut viverra lorem, at laoreet est. Maecenas mollis quam pellentesque iaculis faucibus.</string>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -109,40 +109,52 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Você está em:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldr-js-52S">
-                                    <rect key="frame" x="8" y="8" width="216" height="16"/>
+                                    <rect key="frame" x="8" y="8" width="464" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999 resultados" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gez-uO-2wA">
-                                    <rect key="frame" x="232" y="8" width="80" height="34"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="resultados" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wl-X0-2B6">
+                                    <rect key="frame" x="480" y="23.5" width="80" height="14.5"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="80" id="tNs-iD-S94"/>
+                                        <constraint firstAttribute="width" constant="80" id="cWq-dY-Otz"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome da seção" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtP-ax-kqe">
-                                    <rect key="frame" x="8" y="25" width="216" height="17"/>
+                                    <rect key="frame" x="8" y="25" width="464" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gez-uO-2wA">
+                                    <rect key="frame" x="480" y="8" width="80" height="14.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="80" id="Cdv-XU-uhn"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="gez-uO-2wA" firstAttribute="leading" secondItem="Ldr-js-52S" secondAttribute="trailing" constant="8" id="0sG-94-Sqt"/>
-                                <constraint firstItem="gez-uO-2wA" firstAttribute="bottom" secondItem="4TB-oH-9uM" secondAttribute="bottomMargin" id="4JN-DE-aYp"/>
-                                <constraint firstItem="QtP-ax-kqe" firstAttribute="top" secondItem="Ldr-js-52S" secondAttribute="bottom" constant="1" id="5nI-c9-UlE"/>
-                                <constraint firstItem="QtP-ax-kqe" firstAttribute="width" secondItem="Ldr-js-52S" secondAttribute="width" id="60K-Eg-kuD"/>
-                                <constraint firstItem="gez-uO-2wA" firstAttribute="top" secondItem="4TB-oH-9uM" secondAttribute="topMargin" id="FPW-Q3-3RN"/>
-                                <constraint firstItem="QtP-ax-kqe" firstAttribute="leading" secondItem="4TB-oH-9uM" secondAttribute="leadingMargin" id="Jj2-mU-0FM"/>
-                                <constraint firstAttribute="trailingMargin" secondItem="gez-uO-2wA" secondAttribute="trailing" id="RCf-xS-F0i"/>
-                                <constraint firstItem="Ldr-js-52S" firstAttribute="leading" secondItem="4TB-oH-9uM" secondAttribute="leadingMargin" id="V2P-7z-bhB"/>
-                                <constraint firstItem="gez-uO-2wA" firstAttribute="leading" secondItem="QtP-ax-kqe" secondAttribute="trailing" constant="8" id="o30-Da-oNV"/>
-                                <constraint firstAttribute="trailingMargin" secondItem="gez-uO-2wA" secondAttribute="trailing" id="wHP-CC-jtf"/>
-                                <constraint firstItem="QtP-ax-kqe" firstAttribute="bottom" secondItem="4TB-oH-9uM" secondAttribute="bottomMargin" id="yBN-JJ-P1R"/>
+                                <constraint firstItem="QtP-ax-kqe" firstAttribute="top" secondItem="Ldr-js-52S" secondAttribute="bottom" constant="1" id="1xJ-fq-tit"/>
+                                <constraint firstItem="1wl-X0-2B6" firstAttribute="leading" secondItem="QtP-ax-kqe" secondAttribute="trailing" constant="8" id="3h6-mx-P7V"/>
+                                <constraint firstItem="gez-uO-2wA" firstAttribute="top" secondItem="4TB-oH-9uM" secondAttribute="topMargin" id="9fj-lm-YIv"/>
+                                <constraint firstItem="QtP-ax-kqe" firstAttribute="width" secondItem="Ldr-js-52S" secondAttribute="width" id="Dyk-NK-WIa"/>
+                                <constraint firstItem="1wl-X0-2B6" firstAttribute="trailing" secondItem="4TB-oH-9uM" secondAttribute="trailingMargin" id="Pdr-ou-OEH"/>
+                                <constraint firstItem="1wl-X0-2B6" firstAttribute="trailing" secondItem="4TB-oH-9uM" secondAttribute="trailingMargin" id="Q7p-RP-6js"/>
+                                <constraint firstItem="gez-uO-2wA" firstAttribute="leading" secondItem="Ldr-js-52S" secondAttribute="trailing" constant="8" id="VTN-nH-NTQ"/>
+                                <constraint firstItem="Ldr-js-52S" firstAttribute="leading" secondItem="4TB-oH-9uM" secondAttribute="leadingMargin" id="c6y-Ul-87f"/>
+                                <constraint firstItem="gez-uO-2wA" firstAttribute="trailing" secondItem="4TB-oH-9uM" secondAttribute="trailingMargin" id="jEC-cH-asd"/>
+                                <constraint firstItem="QtP-ax-kqe" firstAttribute="leading" secondItem="4TB-oH-9uM" secondAttribute="leadingMargin" id="kNK-lt-WJh"/>
+                                <constraint firstItem="1wl-X0-2B6" firstAttribute="width" secondItem="gez-uO-2wA" secondAttribute="width" id="nJ4-bS-zVH"/>
+                                <constraint firstItem="1wl-X0-2B6" firstAttribute="top" secondItem="gez-uO-2wA" secondAttribute="bottom" constant="1" id="ndN-kY-PYR"/>
+                                <constraint firstItem="gez-uO-2wA" firstAttribute="trailing" secondItem="4TB-oH-9uM" secondAttribute="trailingMargin" id="okL-Dr-3XJ"/>
+                                <constraint firstItem="Ldr-js-52S" firstAttribute="top" secondItem="4TB-oH-9uM" secondAttribute="topMargin" id="rwI-D4-Amv"/>
                             </constraints>
                         </collectionReusableView>
                         <connections>
@@ -150,8 +162,38 @@
                             <outlet property="delegate" destination="wbJ-EW-esk" id="Jrv-zf-X3r"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="Desafio Mobfiq" id="sBS-7d-nZT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="RW4-9p-fYI">
+                            <connections>
+                                <action selector="showSearchBar:" destination="wbJ-EW-esk" id="g6r-w6-TxL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTz-fF-KnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1929.375" y="63.380281690140848"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BVE-Cr-THi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Grh-vK-8Ef" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5xa-ve-81H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wbJ-EW-esk" kind="relationship" relationship="rootViewController" id="yrO-z9-5xk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5lA-6O-2bN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="931.875" y="63.380281690140848"/>
         </scene>

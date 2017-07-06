@@ -11,7 +11,9 @@ import UIKit
 private let reuseCellIdentifier = "Cell"
 private let reuseHeaderIdentifier = "Header"
 
-class ProductsCollectionViewController: UICollectionViewController {
+class ProductsCollectionViewController: UICollectionViewController, UISearchBarDelegate {
+    
+    var searchController: UISearchController?
     
     var products : [ProductViewModel] = []
     
@@ -24,6 +26,8 @@ class ProductsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //self.navigationController!.definesPresentationContext = true
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -32,45 +36,9 @@ class ProductsCollectionViewController: UICollectionViewController {
         
         // Do any additional setup after loading the view.
         
-        self.view.backgroundColor = UIColor.white
-        
-        // activity indicator
-        let indicator = UIActivityIndicatorView(frame: self.view.bounds)
-        indicator.activityIndicatorViewStyle = .gray
-        
-        self.view.addSubview(indicator)
-        
-        indicator.isUserInteractionEnabled = false
-        indicator.startAnimating()
-        
-        let bgColor = self.collectionView?.backgroundColor
-        self.collectionView?.backgroundColor = UIColor.clear
-        
         // retrieving data...
-        currentCollectionViewState[kLastCellIndex] = 0
-        
-        let service = ProductSearchService(RestApiClient())
-        
-        service.query(currentQuery, maxResults: 10, offset: currentCollectionViewState[kLastCellIndex] as! Int) { (success, object) -> () in
-            let productList = object as! [Product]
-            
-            // model --> viewmodel
-            for product in productList {
-                self.products.append(ProductViewModel(withProduct: product))
-            }
-            
-            // presenting it
-            DispatchQueue.main.async {
-                self.collectionView?.backgroundColor = bgColor
-                
-                indicator.stopAnimating()
-                indicator.removeFromSuperview()
-                
-                self.collectionView!.reloadData()
-            }
-        }
-        
-        self.currentCollectionViewState.addObserver(self, forKeyPath: kLastCellIndex, options: .new, context: nil)
+        let emptyStringQuery = ""
+        self.resetCollectionViewWithData(query: emptyStringQuery)
     }
     
     override func didReceiveMemoryWarning() {
@@ -197,23 +165,93 @@ class ProductsCollectionViewController: UICollectionViewController {
         
         if let newOffset = change?[.newKey] as? Int {
             
-            let service = ProductSearchService(RestApiClient())
-            
-            service.query(self.currentQuery, maxResults: 10, offset: newOffset) { (success, object) -> () in
-                let productList = object as! [Product]
+            if newOffset > 0 {
                 
-                // model --> viewmodel
-                for product in productList {
-                    self.products.append(ProductViewModel(withProduct: product))
-                }
+                let service = ProductSearchService(RestApiClient())
                 
-                DispatchQueue.main.async {
+                service.query(self.currentQuery, maxResults: 10, offset: newOffset) { (success, object) -> () in
+                    let productList = object as! [Product]
                     
-                    self.collectionView!.reloadData()
+                    // model --> viewmodel
+                    for product in productList {
+                        self.products.append(ProductViewModel(withProduct: product))
+                    }
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.collectionView!.reloadData()
+                    }
                 }
             }
         }
         
     }
+    
+    // MARK: Search Bar
+    
+    @IBAction func showSearchBar(_ sender: UIBarButtonItem) {
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController!.searchBar.delegate = self
+        self.navigationController!.present(searchController!, animated: true, completion: nil)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchedText = searchBar.text {
+            self.searchController!.isActive = false
+            self.resetCollectionViewWithData(query: searchedText)
+        }
+    }
+    
+    // MARK: custom methods
+    
+    func resetCollectionViewWithData(query: String) {
+        
+        self.view.backgroundColor = UIColor.white
+        
+        // activity indicator
+        let indicator = UIActivityIndicatorView(frame: self.view.bounds)
+        indicator.activityIndicatorViewStyle = .gray
+        
+        self.view.addSubview(indicator)
+        
+        indicator.isUserInteractionEnabled = false
+        indicator.startAnimating()
+        
+        let bgColor = self.collectionView?.backgroundColor
+        self.collectionView?.backgroundColor = UIColor.clear
+        
+        self.currentQuery = query
+        self.clearCollectionView()
+        
+        let service = ProductSearchService(RestApiClient())
+        
+        service.query(currentQuery, maxResults: 10, offset: currentCollectionViewState[kLastCellIndex] as! Int) { (success, object) -> () in
+            let productList = object as! [Product]
+            
+            // model --> viewmodel
+            for product in productList {
+                self.products.append(ProductViewModel(withProduct: product))
+            }
+            
+            // presenting it
+            DispatchQueue.main.async {
+                self.collectionView?.backgroundColor = bgColor
+                
+                indicator.stopAnimating()
+                indicator.removeFromSuperview()
+                
+                self.collectionView!.reloadData()
+            }
+        }
+        
+        self.currentCollectionViewState.addObserver(self, forKeyPath: kLastCellIndex, options: .new, context: nil)
+    }
+    
+    func clearCollectionView() {
+        self.products.removeAll()
+        self.currentCollectionViewState[kLastCellIndex] = 0
+        self.collectionView!.reloadData()
+    }
+    
     
 }
