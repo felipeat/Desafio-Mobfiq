@@ -15,6 +15,8 @@
 		153D0F1C1F02F89F001F7586 /* Desafio_MobfiqUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D0F1B1F02F89F001F7586 /* Desafio_MobfiqUITests.swift */; };
 		153D0F2B1F02FFDA001F7586 /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D0F2A1F02FFDA001F7586 /* ProductsCollectionViewController.swift */; };
 		153D0F2D1F0319E0001F7586 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D0F2C1F0319E0001F7586 /* ProductCollectionViewCell.swift */; };
+		15587B141F0D683400380949 /* RestApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15587B131F0D683400380949 /* RestApiClient.swift */; };
+		15587B171F0D804F00380949 /* RestApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15587B131F0D683400380949 /* RestApiClient.swift */; };
 		15B39EC41F03584A008D005A /* ProductSearchEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B39EC31F03584A008D005A /* ProductSearchEntities.swift */; };
 		15B39EC51F03584E008D005A /* ProductSearchEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B39EC31F03584A008D005A /* ProductSearchEntities.swift */; };
 		15B39ECA1F0365FD008D005A /* ProductSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B39EC91F0365FD008D005A /* ProductSearchService.swift */; };
@@ -22,6 +24,7 @@
 		15B39ECD1F04329C008D005A /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B39ECC1F04329C008D005A /* ProductViewModel.swift */; };
 		15B39ECE1F04329C008D005A /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B39ECC1F04329C008D005A /* ProductViewModel.swift */; };
 		15B39ED01F04792F008D005A /* ProductViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B39ECF1F04792F008D005A /* ProductViewModelTests.swift */; };
+		15B39ED21F05EB28008D005A /* ProductSearchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B39ED11F05EB28008D005A /* ProductSearchServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +59,12 @@
 		153D0F1D1F02F8A0001F7586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		153D0F2A1F02FFDA001F7586 /* ProductsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewController.swift; sourceTree = "<group>"; };
 		153D0F2C1F0319E0001F7586 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		15587B131F0D683400380949 /* RestApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiClient.swift; sourceTree = "<group>"; };
 		15B39EC31F03584A008D005A /* ProductSearchEntities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchEntities.swift; sourceTree = "<group>"; };
 		15B39EC91F0365FD008D005A /* ProductSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchService.swift; sourceTree = "<group>"; };
 		15B39ECC1F04329C008D005A /* ProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		15B39ECF1F04792F008D005A /* ProductViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewModelTests.swift; sourceTree = "<group>"; };
+		15B39ED11F05EB28008D005A /* ProductSearchServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +129,7 @@
 				153D0F101F02F89F001F7586 /* Desafio_MobfiqTests.swift */,
 				153D0F121F02F89F001F7586 /* Info.plist */,
 				15B39ECF1F04792F008D005A /* ProductViewModelTests.swift */,
+				15B39ED11F05EB28008D005A /* ProductSearchServiceTests.swift */,
 			);
 			path = "Desafio MobfiqTests";
 			sourceTree = "<group>";
@@ -171,6 +177,7 @@
 				15B39EC31F03584A008D005A /* ProductSearchEntities.swift */,
 				15B39EC91F0365FD008D005A /* ProductSearchService.swift */,
 				15B39ECC1F04329C008D005A /* ProductViewModel.swift */,
+				15587B131F0D683400380949 /* RestApiClient.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -312,6 +319,7 @@
 				15B39ECA1F0365FD008D005A /* ProductSearchService.swift in Sources */,
 				153D0F2B1F02FFDA001F7586 /* ProductsCollectionViewController.swift in Sources */,
 				15B39ECD1F04329C008D005A /* ProductViewModel.swift in Sources */,
+				15587B141F0D683400380949 /* RestApiClient.swift in Sources */,
 				153D0F2D1F0319E0001F7586 /* ProductCollectionViewCell.swift in Sources */,
 				15B39EC41F03584A008D005A /* ProductSearchEntities.swift in Sources */,
 				153D0EFC1F02F89F001F7586 /* AppDelegate.swift in Sources */,
@@ -325,6 +333,8 @@
 				15B39EC51F03584E008D005A /* ProductSearchEntities.swift in Sources */,
 				15B39ED01F04792F008D005A /* ProductViewModelTests.swift in Sources */,
 				153D0F111F02F89F001F7586 /* Desafio_MobfiqTests.swift in Sources */,
+				15587B171F0D804F00380949 /* RestApiClient.swift in Sources */,
+				15B39ED21F05EB28008D005A /* ProductSearchServiceTests.swift in Sources */,
 				15B39ECE1F04329C008D005A /* ProductViewModel.swift in Sources */,
 				15B39ECB1F0365FD008D005A /* ProductSearchService.swift in Sources */,
 			);
