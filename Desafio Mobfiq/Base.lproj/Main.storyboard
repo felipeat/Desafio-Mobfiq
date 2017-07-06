@@ -32,9 +32,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="145" height="290"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VLx-ne-8t7">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VLx-ne-8t7">
                                             <rect key="frame" x="5" y="20" width="135" height="150"/>
-                                            <color key="backgroundColor" red="0.2231556757" green="0.73140069799999996" blue="0.31462768880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="150" id="Jco-nN-gEn"/>
                                             </constraints>

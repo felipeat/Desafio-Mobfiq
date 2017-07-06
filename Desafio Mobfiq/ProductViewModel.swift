@@ -12,7 +12,7 @@ class ProductViewModel {
     
     let product: Product
     
-    var productPhotoData: Data?
+    var productPhotoUrlString: String?
     var productNameText: String?
     var previousPriceText: String?
     var currentPriceText: String?
@@ -26,9 +26,8 @@ class ProductViewModel {
         
         if let sku = self.product.skus.first {
             // img
-            if let imgUrlString = sku.images.first?.imageUrl,
-                let imgUrl = URL(string: imgUrlString) {
-                    self.productPhotoData = try? Data(contentsOf: imgUrl)
+            if let imgUrlString = sku.images.first?.imageUrl {
+                self.productPhotoUrlString = imgUrlString
             }
             
             // precos
