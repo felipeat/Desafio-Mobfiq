@@ -32,9 +32,10 @@ class ProductSearchServiceTests: XCTestCase {
             XCTAssertTrue(success)
             XCTAssertNotNil(object)
             
-            let productsSearchResult = object as! [Product]
+            let searchResult = object as! SearchResult
             
-            XCTAssert(productsSearchResult.count > 0)
+            XCTAssert(searchResult.total! > 0)
+            XCTAssert(searchResult.products.count > 0)
             
             expect.fulfill()
         }
@@ -57,9 +58,10 @@ class ProductSearchServiceTests: XCTestCase {
             XCTAssertTrue(success)
             XCTAssertNotNil(object)
             
-            let productsSearchResult = object as! [Product]
+            let searchResult = object as! SearchResult
             
-            XCTAssert(productsSearchResult.count == 0)
+            XCTAssert(searchResult.total! == 0)
+            XCTAssert(searchResult.products.count == 0)
             
             expect.fulfill()
         }
@@ -83,9 +85,10 @@ class ProductSearchServiceTests: XCTestCase {
             XCTAssertTrue(success)
             XCTAssertNotNil(object)
             
-            let productsSearchResult = object as! [Product]
+            let searchResult = object as! SearchResult
             
-            XCTAssert(productsSearchResult.count > 0)
+            XCTAssert(searchResult.total! > 0)
+            XCTAssert(searchResult.products.count > 0)
             
             expect.fulfill()
         }

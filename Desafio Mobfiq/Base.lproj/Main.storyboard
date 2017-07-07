@@ -104,18 +104,18 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Header" id="4TB-oH-9uM">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Header" id="4TB-oH-9uM" customClass="HeaderCollectionReusableView" customModule="Desafio_Mobfiq" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Você está em:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldr-js-52S">
-                                    <rect key="frame" x="8" y="8" width="464" height="16"/>
+                                    <rect key="frame" x="8" y="8" width="216" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="resultados" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wl-X0-2B6">
-                                    <rect key="frame" x="480" y="23.5" width="80" height="14.5"/>
+                                    <rect key="frame" x="232" y="23.5" width="80" height="14.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="cWq-dY-Otz"/>
                                     </constraints>
@@ -123,14 +123,14 @@
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome da seção" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtP-ax-kqe">
-                                    <rect key="frame" x="8" y="25" width="464" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todos os produtos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtP-ax-kqe">
+                                    <rect key="frame" x="8" y="25" width="216" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gez-uO-2wA">
-                                    <rect key="frame" x="480" y="8" width="80" height="14.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gez-uO-2wA">
+                                    <rect key="frame" x="232" y="8" width="80" height="14.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="Cdv-XU-uhn"/>
                                     </constraints>
@@ -156,6 +156,11 @@
                                 <constraint firstItem="gez-uO-2wA" firstAttribute="trailing" secondItem="4TB-oH-9uM" secondAttribute="trailingMargin" id="okL-Dr-3XJ"/>
                                 <constraint firstItem="Ldr-js-52S" firstAttribute="top" secondItem="4TB-oH-9uM" secondAttribute="topMargin" id="rwI-D4-Amv"/>
                             </constraints>
+                            <connections>
+                                <outlet property="lastQueryTitle" destination="QtP-ax-kqe" id="R5b-hz-rAX"/>
+                                <outlet property="resultCount" destination="gez-uO-2wA" id="xXn-3l-Mna"/>
+                                <outlet property="userStateTitle" destination="Ldr-js-52S" id="55c-Ys-unX"/>
+                            </connections>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="wbJ-EW-esk" id="sj8-7O-eEk"/>

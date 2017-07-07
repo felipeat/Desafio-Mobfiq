@@ -9,6 +9,11 @@
 import Foundation
 
 // estrutura e dados que interessam no json vindo da api
+struct SearchResult {
+    var total: Int?
+    var products : [Product] = [Product]()
+}
+
 struct Product {
     var name : String?
     var skus : [Sku] = [Sku]()
@@ -38,6 +43,20 @@ struct BestInstallment {
 
 
 // inicializadores
+extension SearchResult {
+    init(withDictionary dict: [String:Any]) {
+        if let total = dict["Total"] as? Int {
+            self.total = total
+        }
+        
+        if let productList = dict["Products"] as? [[String:Any]] {
+            for product in productList {
+                self.products.append(Product(withDictionary: product))
+            }
+        }
+    }
+}
+
 extension Product {
     init(withDictionary dict: [String:Any]) {
         if let name = dict["Name"] as? String {

@@ -38,17 +38,19 @@ class ProductSearchService {
         if let httpBody = try? JSONSerialization.data(withJSONObject: body) {
             request.httpBody = httpBody
         }
-        
-        var products = [Product]()
-        
+
         self.client.post(request: request) { (success, object) -> () in
             if success {
                 guard let jsonString = object as? String else {
                     completion(false, "No response" as AnyObject)
                     return;
                 }
-                products = try! self.parseSearchResultJson(jsonString)
-                completion(true, products as AnyObject)
+                if let searchResult = try? self.parseSearchResultJson(jsonString) {
+                    completion(true, searchResult as AnyObject)
+                }
+                else {
+                    completion(false, "Invalid response" as AnyObject)
+                }
             }
             else {
                 completion(false, object as? NSString)
@@ -58,19 +60,16 @@ class ProductSearchService {
         self.lastRequest = request as URLRequest
     }
     
-    private func parseSearchResultJson(_ json: String) throws -> [Product] {
-        var products = [Product]()
+    private func parseSearchResultJson(_ json: String) throws -> SearchResult? {
+        var searchResult: SearchResult? = nil
         
         let jsonStringData = json.data(using: .utf8)
         
-            if let data = jsonStringData,
-                let jsonDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                let productList = jsonDictionary["Products"] as? [[String: Any]] {
-                for product in productList {
-                    products.append(Product(withDictionary: product))
-                }
-            }
+        if let data = jsonStringData,
+            let jsonDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+            searchResult = SearchResult(withDictionary: jsonDictionary)
+        }
         
-        return products
+        return searchResult
     }
 }

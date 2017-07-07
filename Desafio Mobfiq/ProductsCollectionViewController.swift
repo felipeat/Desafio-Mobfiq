@@ -15,6 +15,8 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
     
     var searchController: UISearchController?
     
+    var searchResult : SearchResultViewModel? = nil
+    
     var products : [ProductViewModel] = []
     
     var currentQuery = ""
@@ -124,6 +126,15 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
         let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseHeaderIdentifier, for: indexPath)
         
         // Configure the cell
+        let headerCell = cell as! HeaderCollectionReusableView
+        headerCell.resultCount!.text = String(0)
+        
+        if self.searchResult != nil {
+            headerCell.resultCount!.text = String(self.searchResult!.total)
+            headerCell.userStateTitle!.text = currentQuery.characters.count > 0 ? "Você buscou por:" : "Você está em:"
+            headerCell.lastQueryTitle!.text = currentQuery.characters.count > 0 ? currentQuery : "Todos os produtos"
+        }
+        
         
         return cell
     }
@@ -170,16 +181,18 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
                 let service = ProductSearchService(RestApiClient())
                 
                 service.query(self.currentQuery, maxResults: 10, offset: newOffset) { (success, object) -> () in
-                    let productList = object as! [Product]
-                    
-                    // model --> viewmodel
-                    for product in productList {
-                        self.products.append(ProductViewModel(withProduct: product))
-                    }
-                    
-                    DispatchQueue.main.async {
+                    if success {
+                        let result = object as! SearchResult
                         
-                        self.collectionView!.reloadData()
+                        // model --> viewmodel
+                        self.searchResult = SearchResultViewModel(with: result)
+                        for product in result.products {
+                            self.products.append(ProductViewModel(withProduct: product))
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.collectionView!.reloadData()
+                        }
                     }
                 }
             }
@@ -192,6 +205,11 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
     @IBAction func showSearchBar(_ sender: UIBarButtonItem) {
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController!.searchBar.delegate = self
+        self.searchController!.searchBar.text = self.currentQuery
+        
+        // "enablesReturnKeyAutomatically = false" permite que o usuário busque por uma string vazia 
+        self.searchController!.searchBar.enablesReturnKeyAutomatically = false
+        
         self.navigationController!.present(searchController!, animated: true, completion: nil)
     }
     
@@ -221,26 +239,30 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
         self.collectionView?.backgroundColor = UIColor.clear
         
         self.currentQuery = query
+        self.searchResult = nil
         self.clearCollectionView()
         
         let service = ProductSearchService(RestApiClient())
         
         service.query(currentQuery, maxResults: 10, offset: currentCollectionViewState[kLastCellIndex] as! Int) { (success, object) -> () in
-            let productList = object as! [Product]
-            
-            // model --> viewmodel
-            for product in productList {
-                self.products.append(ProductViewModel(withProduct: product))
-            }
-            
-            // presenting it
-            DispatchQueue.main.async {
-                self.collectionView?.backgroundColor = bgColor
+            if success {
+                let result = object as! SearchResult
                 
-                indicator.stopAnimating()
-                indicator.removeFromSuperview()
+                // model --> viewmodel
+                self.searchResult = SearchResultViewModel(with: result)
+                for product in result.products {
+                    self.products.append(ProductViewModel(withProduct: product))
+                }
                 
-                self.collectionView!.reloadData()
+                // presenting it
+                DispatchQueue.main.async {
+                    self.collectionView?.backgroundColor = bgColor
+                    
+                    indicator.stopAnimating()
+                    indicator.removeFromSuperview()
+                    
+                    self.collectionView!.reloadData()
+                }
             }
         }
         
