@@ -8,9 +8,8 @@
 
 import Foundation
 
-class ProductSearchService {
+class ProductSearchService : MobfiqService {
     
-    static let endpoint = "https://desafio.mobfiq.com.br/Search/Criteria"
     static let kContentType = "application/json"
     
     // body keys
@@ -29,23 +28,29 @@ class ProductSearchService {
         self.client = apiClient
     }
     
-    func query(_ query: String, maxResults count: Int = kDefaultMaxItems, offset: Int = kDefaultOffset, completion: @escaping (_ success: Bool, _ object: AnyObject?) -> ()) {
+    func query(withString query: String, maxResults count: Int, offset: Int, completion: @escaping (_ success: Bool, _ object: AnyObject?) -> ()) {
         
-        let request = NSMutableURLRequest(url: URL(string: ProductSearchService.endpoint)!)
+        let simpleCriteria = [ProductSearchService.kQueryBodyKey : query, ProductSearchService.kOffsetBodyKey : offset, ProductSearchService.kSizeBodyKey : count] as [String : Any]
+        self.query(withSearchCriteria: simpleCriteria, completion: completion)
+    }
+    
+    func query(withSearchCriteria criteria: [String: Any], completion: @escaping (_ success: Bool, _ object: AnyObject?) -> ()) {
+        
+        let request = NSMutableURLRequest(url: URL(string: MobfiqServiceEndpoint.SearchCriteria.rawValue)!)
         request.setValue(ProductSearchService.kContentType, forHTTPHeaderField: "Content-Type")
         
-        let body = [ProductSearchService.kQueryBodyKey : query, ProductSearchService.kOffsetBodyKey : offset, ProductSearchService.kSizeBodyKey : count] as [String : Any]
-        if let httpBody = try? JSONSerialization.data(withJSONObject: body) {
+        
+        if let httpBody = try? JSONSerialization.data(withJSONObject: criteria) {
             request.httpBody = httpBody
         }
-
+        
         self.client.post(request: request) { (success, object) -> () in
             if success {
                 guard let jsonString = object as? String else {
                     completion(false, "No response" as AnyObject)
                     return;
                 }
-                if let searchResult = try? self.parseSearchResultJson(jsonString) {
+                if let searchResult : SearchResult = try! self.parseJson(jsonString) {
                     completion(true, searchResult as AnyObject)
                 }
                 else {
@@ -59,17 +64,5 @@ class ProductSearchService {
         
         self.lastRequest = request as URLRequest
     }
-    
-    private func parseSearchResultJson(_ json: String) throws -> SearchResult? {
-        var searchResult: SearchResult? = nil
-        
-        let jsonStringData = json.data(using: .utf8)
-        
-        if let data = jsonStringData,
-            let jsonDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
-            searchResult = SearchResult(withDictionary: jsonDictionary)
-        }
-        
-        return searchResult
-    }
+
 }

@@ -43,7 +43,7 @@ struct BestInstallment {
 
 
 // inicializadores
-extension SearchResult {
+extension SearchResult : DecodableEntity {
     init(withDictionary dict: [String:Any]) {
         if let total = dict["Total"] as? Int {
             self.total = total
@@ -57,7 +57,7 @@ extension SearchResult {
     }
 }
 
-extension Product {
+extension Product : DecodableEntity {
     init(withDictionary dict: [String:Any]) {
         if let name = dict["Name"] as? String {
             self.name = name
@@ -71,7 +71,7 @@ extension Product {
     }
 }
 
-extension Sku {
+extension Sku : DecodableEntity {
     init(withDictionary dict: [String:Any]) {
         if let name = dict["Name"] as? String {
             self.name = name
@@ -93,7 +93,7 @@ extension Sku {
     }
 }
 
-extension Seller {
+extension Seller : DecodableEntity {
     init(withDictionary dict: [String:Any]) {
         if let price = dict["Price"] as? Double {
             self.price = price

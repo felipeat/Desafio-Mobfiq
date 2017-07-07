@@ -26,9 +26,9 @@ class ProductSearchServiceTests: XCTestCase {
         
         let service = ProductSearchService(RestApiClient())
         
-        let expect = expectation(description: "POST \(ProductSearchService.endpoint)")
+        let expect = expectation(description: "POST \(MobfiqServiceEndpoint.SearchCriteria.rawValue)")
         
-        service.query(zeroCharquery) { (success, object) -> () in
+        service.query(withString:zeroCharquery, maxResults: 10, offset: 0) { (success, object) -> () in
             XCTAssertTrue(success)
             XCTAssertNotNil(object)
             
@@ -52,9 +52,9 @@ class ProductSearchServiceTests: XCTestCase {
         
         let service = ProductSearchService(RestApiClient())
         
-        let expect = expectation(description: "POST \(ProductSearchService.endpoint)")
+        let expect = expectation(description: "POST \(MobfiqServiceEndpoint.SearchCriteria.rawValue)")
         
-        service.query(fooQuery) { (success, object) -> () in
+        service.query(withString:fooQuery, maxResults: 10, offset: 0) { (success, object) -> () in
             XCTAssertTrue(success)
             XCTAssertNotNil(object)
             
@@ -79,9 +79,9 @@ class ProductSearchServiceTests: XCTestCase {
         
         let service = ProductSearchService(RestApiClient())
         
-        let expect = expectation(description: "POST \(ProductSearchService.endpoint)")
+        let expect = expectation(description: "POST \(MobfiqServiceEndpoint.SearchCriteria.rawValue)")
         
-        service.query(airfryerQuery) { (success, object) -> () in
+        service.query(withString:airfryerQuery, maxResults: 10, offset: 0) { (success, object) -> () in
             XCTAssertTrue(success)
             XCTAssertNotNil(object)
             
@@ -100,13 +100,49 @@ class ProductSearchServiceTests: XCTestCase {
         }
     }
     
-    /*
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testQuerySearchWithCriteriaFromCategory() {
+        
+        let apiClient = RestApiClient()
+        
+        let request = NSMutableURLRequest(url: URL(string: "https://desafio.mobfiq.com.br/StorePreference/CategoryTree")!)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let expect = expectation(description: "GET \(request.url!.absoluteString)")
+        
+        apiClient.get(request: request as NSMutableURLRequest) { (success, object) in
+            
+            let jsonString = object as! String
+            
+            
+            if let data = jsonString.data(using: .utf8),
+                let jsonObject = try! JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                
+                let categories = jsonObject["Categories"] as! [[String : Any]]
+                let redirect = categories[0]["Redirect"] as! [String : Any]
+                let searchCriteria = redirect["SearchCriteria"] as! [String : Any]
+                
+                let service = ProductSearchService(RestApiClient())
+                
+                service.query(withSearchCriteria: searchCriteria) { (success, object) -> () in
+                    XCTAssertTrue(success)
+                    XCTAssertNotNil(object)
+                    
+                    let searchResult = object as! SearchResult
+                    
+                    XCTAssert(searchResult.total! > 0)
+                    XCTAssert(searchResult.products.count > 0)
+                    
+                    expect.fulfill()
+                }
+            }
+            
+        }
+
+        waitForExpectations(timeout: request.timeoutInterval * 2) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
         }
     }
- */
     
 }

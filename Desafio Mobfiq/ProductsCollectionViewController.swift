@@ -180,7 +180,7 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
                 
                 let service = ProductSearchService(RestApiClient())
                 
-                service.query(self.currentQuery, maxResults: 10, offset: newOffset) { (success, object) -> () in
+                service.query(withString: self.currentQuery, maxResults: 10, offset: newOffset) { (success, object) -> () in
                     if success {
                         let result = object as! SearchResult
                         
@@ -244,7 +244,7 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
         
         let service = ProductSearchService(RestApiClient())
         
-        service.query(currentQuery, maxResults: 10, offset: currentCollectionViewState[kLastCellIndex] as! Int) { (success, object) -> () in
+        service.query(withString: currentQuery, maxResults: 10, offset: currentCollectionViewState[kLastCellIndex] as! Int) { (success, object) -> () in
             if success {
                 let result = object as! SearchResult
                 
