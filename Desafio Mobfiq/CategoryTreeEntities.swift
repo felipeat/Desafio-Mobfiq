@@ -49,7 +49,7 @@ extension Category : DecodableEntity {
             self.redirect = Redirect(withDictionary:redirect)
         }
         
-        if let categoryList = dict["Categories"] as? [[String:Any]] {
+        if let categoryList = dict["SubCategories"] as? [[String:Any]] {
             for category in categoryList {
                 self.subcategories.append(Category(withDictionary: category))
             }

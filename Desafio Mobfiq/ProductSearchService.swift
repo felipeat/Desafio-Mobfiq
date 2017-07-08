@@ -34,7 +34,7 @@ class ProductSearchService : MobfiqService {
         self.query(withSearchCriteria: simpleCriteria, completion: completion)
     }
     
-    func query(withSearchCriteria criteria: [String: Any], completion: @escaping (_ success: Bool, _ object: AnyObject?) -> ()) {
+    func query(withSearchCriteria criteria: [String: Any?], completion: @escaping (_ success: Bool, _ object: AnyObject?) -> ()) {
         
         let request = NSMutableURLRequest(url: URL(string: MobfiqServiceEndpoint.SearchCriteria.rawValue)!)
         request.setValue(ProductSearchService.kContentType, forHTTPHeaderField: "Content-Type")
@@ -65,4 +65,27 @@ class ProductSearchService : MobfiqService {
         self.lastRequest = request as URLRequest
     }
 
+}
+
+// MARK - Criteria Builder
+
+class SearchCriteriaBuilder {
+    func simpleCriteriaObject(withQuery query: String, offset : Int = 0, size : Int = 10) -> [String: Any?] {
+        return ["Query" : query, "Offset" : offset, "Size" : size]
+    }
+    func fullCriteriaObject(withQuery query: String) -> [String: Any?] {
+        var criteria = self.simpleCriteriaObject(withQuery: query)
+        criteria["OrderBy"] = nil
+        criteria["Filter"] = nil
+        criteria["ApiQuery"] = nil
+        criteria["ProductId"] = nil
+        criteria["Hotsite"] = nil
+        criteria["RealProductId"] = nil
+        criteria["EAN"] = nil
+        criteria["RealProductIdGroup"] = nil
+        criteria["FacetItems"] = nil
+        criteria["SearchApi"] = nil
+        
+        return criteria
+    }
 }

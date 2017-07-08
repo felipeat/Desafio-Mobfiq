@@ -36,6 +36,8 @@
 		15E5A3591F1005DD007A09F9 /* DecodableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5A3521F1001BE007A09F9 /* DecodableEntity.swift */; };
 		15E5A35A1F1005DD007A09F9 /* MobfiqService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5A3541F1002E5007A09F9 /* MobfiqService.swift */; };
 		15E5A35C1F1008AB007A09F9 /* StorePreferenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5A35B1F1008AB007A09F9 /* StorePreferenceServiceTests.swift */; };
+		15E5A35E1F101AC1007A09F9 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5A35D1F101AC1007A09F9 /* CategoriesTableViewController.swift */; };
+		15E5A3601F101C31007A09F9 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5A35F1F101C31007A09F9 /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		15E5A3521F1001BE007A09F9 /* DecodableEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableEntity.swift; sourceTree = "<group>"; };
 		15E5A3541F1002E5007A09F9 /* MobfiqService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobfiqService.swift; sourceTree = "<group>"; };
 		15E5A35B1F1008AB007A09F9 /* StorePreferenceServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorePreferenceServiceTests.swift; sourceTree = "<group>"; };
+		15E5A35D1F101AC1007A09F9 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
+		15E5A35F1F101C31007A09F9 /* CategoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				153D0F2A1F02FFDA001F7586 /* ProductsCollectionViewController.swift */,
+				15E5A35D1F101AC1007A09F9 /* CategoriesTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				15E5A3501F0FFD27007A09F9 /* StorePreferenceService.swift */,
 				15E5A3521F1001BE007A09F9 /* DecodableEntity.swift */,
 				15E5A3541F1002E5007A09F9 /* MobfiqService.swift */,
+				15E5A35F1F101C31007A09F9 /* CategoryViewModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -348,12 +354,14 @@
 				15B39ECD1F04329C008D005A /* ProductViewModel.swift in Sources */,
 				15587B141F0D683400380949 /* RestApiClient.swift in Sources */,
 				153D0F2D1F0319E0001F7586 /* ProductCollectionViewCell.swift in Sources */,
+				15E5A3601F101C31007A09F9 /* CategoryViewModel.swift in Sources */,
 				15E5A3551F1002E5007A09F9 /* MobfiqService.swift in Sources */,
 				15E5A34F1F0FF8D5007A09F9 /* CategoryTreeEntities.swift in Sources */,
 				15B39EC41F03584A008D005A /* ProductSearchEntities.swift in Sources */,
 				15E5A34D1F0F3C8B007A09F9 /* SearchResultViewModel.swift in Sources */,
 				15E5A3511F0FFD27007A09F9 /* StorePreferenceService.swift in Sources */,
 				153D0EFC1F02F89F001F7586 /* AppDelegate.swift in Sources */,
+				15E5A35E1F101AC1007A09F9 /* CategoriesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,10 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
     
     var products : [ProductViewModel] = []
     
-    var currentQuery = ""
+    var fromCategory: String?
+    var initialCriteria: [String : Any?]?
+    
+    var criteria: [String : Any?]?
     
     var currentCollectionViewState: NSMutableDictionary = [:]
     
@@ -38,9 +41,16 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
         
         // Do any additional setup after loading the view.
         
+        if self.fromCategory == nil {
+            self.fromCategory = "Todos os produtos"
+        }
+        
         // retrieving data...
-        let emptyStringQuery = ""
-        self.resetCollectionViewWithData(query: emptyStringQuery)
+        if self.initialCriteria == nil {
+            let criteriaBuilder = SearchCriteriaBuilder()
+            self.initialCriteria = criteriaBuilder.simpleCriteriaObject(withQuery: "")
+        }
+        self.loadDataWithCriteria(self.initialCriteria!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -131,8 +141,18 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
         
         if self.searchResult != nil {
             headerCell.resultCount!.text = String(self.searchResult!.total)
-            headerCell.userStateTitle!.text = currentQuery.characters.count > 0 ? "Você buscou por:" : "Você está em:"
-            headerCell.lastQueryTitle!.text = currentQuery.characters.count > 0 ? currentQuery : "Todos os produtos"
+            
+            if let query = self.criteria!["Query"] as? String,
+                query.characters.count > 0 {
+                headerCell.userStateTitle!.text = "Você buscou por:"
+                headerCell.lastQueryTitle!.text = query
+                
+            }
+            else {
+                headerCell.userStateTitle!.text = "Você está em:"
+                headerCell.lastQueryTitle!.text = fromCategory!
+            }
+            
         }
         
         
@@ -180,7 +200,9 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
                 
                 let service = ProductSearchService(RestApiClient())
                 
-                service.query(withString: self.currentQuery, maxResults: 10, offset: newOffset) { (success, object) -> () in
+                self.criteria!["Offset"] = newOffset
+                
+                service.query(withSearchCriteria: self.criteria!) { (success, object) -> () in
                     if success {
                         let result = object as! SearchResult
                         
@@ -205,7 +227,7 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
     @IBAction func showSearchBar(_ sender: UIBarButtonItem) {
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController!.searchBar.delegate = self
-        self.searchController!.searchBar.text = self.currentQuery
+        self.searchController!.searchBar.text = self.criteria?["Query"] as? String
         
         // "enablesReturnKeyAutomatically = false" permite que o usuário busque por uma string vazia 
         self.searchController!.searchBar.enablesReturnKeyAutomatically = false
@@ -216,13 +238,20 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchedText = searchBar.text {
             self.searchController!.isActive = false
-            self.resetCollectionViewWithData(query: searchedText)
+            if searchedText.characters.count > 0 {
+                let criteriaBuilder = SearchCriteriaBuilder()
+                let criteriaWithUserQuery = criteriaBuilder.simpleCriteriaObject(withQuery: searchedText)
+                self.loadDataWithCriteria(criteriaWithUserQuery)
+            }
+            else {
+                self.loadDataWithCriteria(self.initialCriteria!)
+            }
         }
     }
     
     // MARK: custom methods
     
-    func resetCollectionViewWithData(query: String) {
+    func loadDataWithCriteria(_ criteria: [String : Any?]) {
         
         self.view.backgroundColor = UIColor.white
         
@@ -238,13 +267,13 @@ class ProductsCollectionViewController: UICollectionViewController, UISearchBarD
         let bgColor = self.collectionView?.backgroundColor
         self.collectionView?.backgroundColor = UIColor.clear
         
-        self.currentQuery = query
+        self.criteria = criteria
         self.searchResult = nil
         self.clearCollectionView()
         
         let service = ProductSearchService(RestApiClient())
         
-        service.query(withString: currentQuery, maxResults: 10, offset: currentCollectionViewState[kLastCellIndex] as! Int) { (success, object) -> () in
+        service.query(withSearchCriteria: criteria) { (success, object) -> () in
             if success {
                 let result = object as! SearchResult
                 
