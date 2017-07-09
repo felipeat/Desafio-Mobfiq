@@ -83,7 +83,14 @@ class CategoriesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseCellIdentifier, for: indexPath)
 
         // Configure the cell...
-        cell.textLabel!.text = self.categories[indexPath.row].title
+        
+        let category = self.categories[indexPath.row]
+        let attributedTitle : NSMutableAttributedString = category.attributedTitle.mutableCopy() as! NSMutableAttributedString
+        if category.highlight {
+            attributedTitle.addAttributes([NSForegroundColorAttributeName : UIColor(red:0.20, green:0.40, blue:0.60, alpha:1.0), NSFontAttributeName : UIFont.boldSystemFont(ofSize: 17)], range: NSRange(location: 0, length: attributedTitle.length))
+        }
+        
+        cell.textLabel!.attributedText = attributedTitle
 
         return cell
     }

@@ -17,6 +17,7 @@ struct Category {
     var name: String?
     var redirect : Redirect?
     var subcategories: [Category] = [Category]()
+    var highlight = false
     var categoryListOrder = 0
     var categoryTreeOrder = 0
 }
@@ -41,6 +42,7 @@ extension Category : DecodableEntity {
     init(withDictionary dict: [String:Any]) {
         
         if let name = dict["Name"] as? String { self.name = name }
+        if let highlight = dict["Highlight"] as? Bool { self.highlight = highlight }
 
         if let categoryListOrder = dict["CategoryListOrder"] as? Int { self.categoryListOrder = categoryListOrder }
         if let categoryTreeOrder = dict["CategoryTreeOrder"] as? Int { self.categoryTreeOrder = categoryTreeOrder }

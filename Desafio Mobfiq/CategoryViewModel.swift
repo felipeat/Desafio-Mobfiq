@@ -11,10 +11,14 @@ import Foundation
 class CategoryViewModel {
     
     let category: Category
-    var title: String
+    private(set) var attributedTitle: NSAttributedString
+    var title : String
+    var highlight: Bool = false
     
     init(with category: Category) {
         self.category = category
+        self.highlight = category.highlight
         self.title = category.name!
+        self.attributedTitle = NSAttributedString(string:category.name!)
     }
 }
