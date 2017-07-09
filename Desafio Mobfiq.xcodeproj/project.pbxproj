@@ -167,6 +167,7 @@
 				15B39EBB1F0348FC008D005A /* View */,
 				15B39EBC1F034938008D005A /* Controller */,
 				15B39EBD1F034943008D005A /* Model */,
+				159BE42F1F11D54A001AF28A /* ViewModel */,
 			);
 			path = "Desafio Mobfiq";
 			sourceTree = "<group>";
@@ -200,6 +201,7 @@
 				153D0F021F02F89F001F7586 /* Assets.xcassets */,
 				159BE41C1F11AB9D001AF28A /* Desafio Mobfiq.entitlements */,
 				153D0F071F02F89F001F7586 /* Info.plist */,
+				153D0F041F02F89F001F7586 /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -221,11 +223,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		159BE42F1F11D54A001AF28A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15B39ECC1F04329C008D005A /* ProductViewModel.swift */,
+				15E5A34C1F0F3C8B007A09F9 /* SearchResultViewModel.swift */,
+				15E5A35F1F101C31007A09F9 /* CategoryViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		159BE4301F11D581001AF28A /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				15E5A34E1F0FF8D5007A09F9 /* CategoryTreeEntities.swift */,
+				15B39EC31F03584A008D005A /* ProductSearchEntities.swift */,
+				15E5A3521F1001BE007A09F9 /* DecodableEntity.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		159BE4311F11D598001AF28A /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				15B39EC91F0365FD008D005A /* ProductSearchService.swift */,
+				15587B131F0D683400380949 /* RestApiClient.swift */,
+				15E5A3501F0FFD27007A09F9 /* StorePreferenceService.swift */,
+				15E5A3541F1002E5007A09F9 /* MobfiqService.swift */,
+			);
+			name = APIService;
+			sourceTree = "<group>";
+		};
 		15B39EBB1F0348FC008D005A /* View */ = {
 			isa = PBXGroup;
 			children = (
 				153D0EFF1F02F89F001F7586 /* Main.storyboard */,
-				153D0F041F02F89F001F7586 /* LaunchScreen.storyboard */,
 				153D0F2C1F0319E0001F7586 /* ProductCollectionViewCell.swift */,
 				15E5A34A1F0F19BA007A09F9 /* HeaderCollectionReusableView.swift */,
 			);
@@ -244,16 +276,8 @@
 		15B39EBD1F034943008D005A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				15E5A34E1F0FF8D5007A09F9 /* CategoryTreeEntities.swift */,
-				15B39EC31F03584A008D005A /* ProductSearchEntities.swift */,
-				15B39EC91F0365FD008D005A /* ProductSearchService.swift */,
-				15B39ECC1F04329C008D005A /* ProductViewModel.swift */,
-				15587B131F0D683400380949 /* RestApiClient.swift */,
-				15E5A34C1F0F3C8B007A09F9 /* SearchResultViewModel.swift */,
-				15E5A3501F0FFD27007A09F9 /* StorePreferenceService.swift */,
-				15E5A3521F1001BE007A09F9 /* DecodableEntity.swift */,
-				15E5A3541F1002E5007A09F9 /* MobfiqService.swift */,
-				15E5A35F1F101C31007A09F9 /* CategoryViewModel.swift */,
+				159BE4301F11D581001AF28A /* Entities */,
+				159BE4311F11D598001AF28A /* APIService */,
 			);
 			name = Model;
 			sourceTree = "<group>";
