@@ -7,15 +7,36 @@
 //
 
 import UIKit
+import Pushwoosh
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, PushNotificationDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // ===== PUSHWOOSH CONFIG ===== BEGIN =====
+        
+        // set custom delegate for push handling, in our case AppDelegate
+        PushNotificationManager.push().delegate = self
+        
+        // set default Pushwoosh delegate for iOS10 foreground push handling
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = PushNotificationManager.push().notificationCenterDelegate
+        }
+        
+        // track application open statistics
+        PushNotificationManager.push().sendAppOpen()
+        
+        // register for push notifications!
+        PushNotificationManager.push().registerForPushNotifications()
+        
+        // ===== PUSHWOOSH CONFIG ===== END =====
+        
         return true
     }
 
@@ -40,6 +61,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        PushNotificationManager.push().handlePushRegistration(deviceToken as Data!)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        PushNotificationManager.push().handlePushRegistrationFailure(error)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        PushNotificationManager.push().handlePushReceived(userInfo)
+        completionHandler(UIBackgroundFetchResult.noData)
+    }
+    
+    
+    // ===== PUSHWOOSH DELEGATE ===== BEGIN =====
+    
+    func onPushAccepted(_ pushManager: PushNotificationManager!, withNotification pushNotification: [AnyHashable : Any]!, onStart: Bool) {
+        print("Push notification accepted: \(pushNotification)")
+    }
+ 
+    // ===== PUSHWOOSH DELEGATE ===== END =====
 
 
 }

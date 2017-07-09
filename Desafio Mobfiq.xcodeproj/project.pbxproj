@@ -16,6 +16,10 @@
 		153D0F2D1F0319E0001F7586 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D0F2C1F0319E0001F7586 /* ProductCollectionViewCell.swift */; };
 		15587B141F0D683400380949 /* RestApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15587B131F0D683400380949 /* RestApiClient.swift */; };
 		15587B171F0D804F00380949 /* RestApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15587B131F0D683400380949 /* RestApiClient.swift */; };
+		159BE4191F11A907001AF28A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 159BE4181F11A907001AF28A /* libz.tbd */; };
+		159BE41B1F11A918001AF28A /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 159BE41A1F11A918001AF28A /* libstdc++.tbd */; };
+		159BE42C1F11B44B001AF28A /* Pushwoosh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159BE4151F11A8BE001AF28A /* Pushwoosh.framework */; };
+		159BE42D1F11B44B001AF28A /* Pushwoosh.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 159BE4151F11A8BE001AF28A /* Pushwoosh.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		15B39EC41F03584A008D005A /* ProductSearchEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B39EC31F03584A008D005A /* ProductSearchEntities.swift */; };
 		15B39EC51F03584E008D005A /* ProductSearchEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B39EC31F03584A008D005A /* ProductSearchEntities.swift */; };
 		15B39ECA1F0365FD008D005A /* ProductSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B39EC91F0365FD008D005A /* ProductSearchService.swift */; };
@@ -57,6 +61,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		159BE42E1F11B44B001AF28A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				159BE42D1F11B44B001AF28A /* Pushwoosh.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		153D0EF81F02F89E001F7586 /* Desafio Mobfiq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio Mobfiq.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		153D0EFB1F02F89F001F7586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +91,10 @@
 		153D0F2A1F02FFDA001F7586 /* ProductsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewController.swift; sourceTree = "<group>"; };
 		153D0F2C1F0319E0001F7586 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		15587B131F0D683400380949 /* RestApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiClient.swift; sourceTree = "<group>"; };
+		159BE4151F11A8BE001AF28A /* Pushwoosh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pushwoosh.framework; sourceTree = "<group>"; };
+		159BE4181F11A907001AF28A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		159BE41A1F11A918001AF28A /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		159BE41C1F11AB9D001AF28A /* Desafio Mobfiq.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Desafio Mobfiq.entitlements"; sourceTree = "<group>"; };
 		15B39EC31F03584A008D005A /* ProductSearchEntities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchEntities.swift; sourceTree = "<group>"; };
 		15B39EC91F0365FD008D005A /* ProductSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductSearchService.swift; sourceTree = "<group>"; };
 		15B39ECC1F04329C008D005A /* ProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
@@ -94,6 +116,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159BE41B1F11A918001AF28A /* libstdc++.tbd in Frameworks */,
+				159BE42C1F11B44B001AF28A /* Pushwoosh.framework in Frameworks */,
+				159BE4191F11A907001AF28A /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +146,7 @@
 				153D0F0F1F02F89F001F7586 /* Desafio MobfiqTests */,
 				153D0F1A1F02F89F001F7586 /* Desafio MobfiqUITests */,
 				153D0EF91F02F89E001F7586 /* Products */,
+				159BE4171F11A907001AF28A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,11 +195,30 @@
 		153D0F291F02FF75001F7586 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				159BE4141F11A8A3001AF28A /* Frameworks */,
 				153D0EFB1F02F89F001F7586 /* AppDelegate.swift */,
 				153D0F021F02F89F001F7586 /* Assets.xcassets */,
+				159BE41C1F11AB9D001AF28A /* Desafio Mobfiq.entitlements */,
 				153D0F071F02F89F001F7586 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		159BE4141F11A8A3001AF28A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				159BE4151F11A8BE001AF28A /* Pushwoosh.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		159BE4171F11A907001AF28A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				159BE41A1F11A918001AF28A /* libstdc++.tbd */,
+				159BE4181F11A907001AF28A /* libz.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		15B39EBB1F0348FC008D005A /* View */ = {
@@ -223,6 +268,7 @@
 				153D0EF41F02F89E001F7586 /* Sources */,
 				153D0EF51F02F89E001F7586 /* Frameworks */,
 				153D0EF61F02F89E001F7586 /* Resources */,
+				159BE42E1F11B44B001AF28A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -281,7 +327,16 @@
 				TargetAttributes = {
 					153D0EF71F02F89E001F7586 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 7M244R8B47;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					153D0F0B1F02F89F001F7586 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -524,6 +579,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Desafio Mobfiq/Desafio Mobfiq.entitlements";
+				DEVELOPMENT_TEAM = 7M244R8B47;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Desafio\\ Mobfiq/**",
+				);
 				INFOPLIST_FILE = "Desafio Mobfiq/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.felipeat.Desafio-Mobfiq";
@@ -536,6 +597,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Desafio Mobfiq/Desafio Mobfiq.entitlements";
+				DEVELOPMENT_TEAM = 7M244R8B47;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Desafio\\ Mobfiq/**",
+				);
 				INFOPLIST_FILE = "Desafio Mobfiq/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.felipeat.Desafio-Mobfiq";
