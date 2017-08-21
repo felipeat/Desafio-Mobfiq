@@ -22,7 +22,7 @@ class ProductViewModelTests: XCTestCase {
     
     func testListPriceBRLFormat() {
         
-        let listPrice: Double? = 1199.83
+        let listPrice: Double? = 1199.835
         let formattedListPrice : String? = "R$1.199,83"
         
         let product = Product(name: nil, skus: [Sku(name: nil, sellers: [Seller(price: nil, listPrice: listPrice, bestInstallment: nil)] , images: [])])
