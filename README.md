@@ -1,4 +1,6 @@
 # Desafio-Mobfiq
+[![Build Status](https://travis-ci.org/felipeat/Desafio-Mobfiq.svg?branch=master)](https://travis-ci.org/felipeat/Desafio-Mobfiq)
+
 
 ### Vídeo de demonstração do app finalizado:
 
