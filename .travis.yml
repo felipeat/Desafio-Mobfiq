@@ -3,4 +3,5 @@ osx_image: xcode8.3
 xcode_project: Desafio Mobfiq.xcodeproj
 xcode_scheme: Desafio Mobfiq
 script:
-    - xcodebuild clean build test -sdk iphonesimulator -project "Desafio Mobfiq.xcodeproj" -scheme "Desafio Mobfiq" -destination "platform=iOS Simulator,OS=10.3.1,name=iPhone 5"
+    - xcodebuild clean build -sdk iphonesimulator -project "Desafio Mobfiq.xcodeproj" -scheme "Desafio Mobfiq" -destination "platform=iOS Simulator,OS=10.3.1,name=iPhone 5"
+    - xcodebuild test -sdk iphonesimulator -project "Desafio Mobfiq.xcodeproj" -scheme "Desafio MobfiqTests" -destination "platform=iOS Simulator,OS=10.3.1,name=iPhone 5"
